@@ -1,20 +1,13 @@
-import json
-import os
+import streamlit as st
 from datetime import date
-
-DATA_FILE = os.path.join(os.path.dirname(__file__), "caixinhas_data.json")
 
 
 def load_data() -> dict:
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
+    return st.session_state["caixinhas_data"]
 
 
 def save_data(data: dict) -> None:
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    pass  # dados já estão em session_state por referência
 
 
 def get_month_key(year: int, month: int) -> str:
@@ -31,7 +24,6 @@ def add_entrada(data: dict, key: str, descricao: str, valor: float, data_tx: str
     data[key]["entradas"].append(
         {"data": data_tx, "descricao": descricao, "valor": valor, "tipo": "entrada"}
     )
-    save_data(data)
 
 
 def add_gasto(
@@ -47,7 +39,6 @@ def add_gasto(
             "tipo": "gasto",
         }
     )
-    save_data(data)
 
 
 def delete_transaction(data: dict, key: str, tipo: str, index: int) -> None:
@@ -56,7 +47,6 @@ def delete_transaction(data: dict, key: str, tipo: str, index: int) -> None:
         transactions = data[key][tipo]
         if 0 <= index < len(transactions):
             transactions.pop(index)
-            save_data(data)
 
 
 def get_month_summary(data: dict, key: str) -> dict:

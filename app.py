@@ -57,10 +57,10 @@ st.markdown(
 )
 
 # ── Inicializar estado ──────────────────────────────────────────────────────
-if "dados" not in st.session_state:
-    st.session_state.dados = db.load_data()
+if "caixinhas_data" not in st.session_state:
+    st.session_state["caixinhas_data"] = {}
 
-dados = st.session_state.dados
+dados = db.load_data()
 
 # ── Sidebar ─────────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -117,7 +117,7 @@ with st.sidebar:
         label_visibility="collapsed",
     )
     st.divider()
-    st.caption("Dados salvos localmente em `caixinhas_data.json`")
+    st.caption("Dados mantidos na sessão do browser")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
