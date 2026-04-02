@@ -1,0 +1,28 @@
+{
+  "2026-01": {
+    "entradas": [
+      {
+        "data": "2026-01-01",
+        "descricao": "Salario Abril",
+        "valor": 3500.0,
+        "tipo": "entrada"
+      }
+    ],
+    "gastos": [
+      {
+        "data": "2026-01-01",
+        "descricao": "Aluguel",
+        "categoria": "Aluguel / Moradia",
+        "valor": 300.0,
+        "tipo": "gasto"
+      },
+      {
+        "data": "2026-01-01",
+        "descricao": "Luz",
+        "categoria": "Contas Fixas",
+        "valor": 72.0,
+        "tipo": "gasto"
+      }
+    ]
+  }
+}
